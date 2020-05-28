@@ -1,0 +1,3 @@
+1. Open the link in the browser
+
+2. Use the input boxes with the buttons to get the result of the queries

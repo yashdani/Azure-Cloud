@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+
+             ['Longitude', 'Latitude'],
+            {% for value in tableData %}
+                [ Number('{{ value[0] }}'), Number('{{ value[1] }}')],
+            {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Longitude Latitude',
+          hAxis: {title: 'Longitude', minValue: -180, maxValue: 180},
+          vAxis: {title: 'Latitude', minValue: -90, maxValue: 90},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
